@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Monthsary, babyy my love so sweet!</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.6/dist/sweetalert2.all.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.6/dist/sweetalert2.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com">
+  <link href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      font-family: "Raleway", sans-serif;
+    }
+    #container{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      background-color: #ffe6e6; /* Light pink */
+    }
+    #heart {
+      cursor: pointer;
+      color: red;
+      font-size: 100px;
+      animation: heartbeat 1s infinite;
+    }
+    @keyframes heartbeat {
+      0% {
+        transform: scale(0.8);
+      }
+      50% {
+        transform: scale(1);
+      }
+      100% {
+        transform: scale(0.8);
+      }
+    }
+  </style>
+</head>
+<body>
+    <div id="container">
+        <div id="heart">&hearts;</div>
+    </div>
+
+    <script>
+        $("#heart").on('click', function() {
+          Swal.fire({
+            title: "Are you sure?",
+            text: "Love ko nimu babyyy?",
+            icon: "warning",
+            showDenyButton: true,
+            confirmButtonText: "Yes",
+            denyButtonText: `No`
+          }).then((res1) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (res1.isConfirmed) {
+              Swal.fire({
+                title: "Are you sure?",
+                text: "Sure na talaga babyy? do you really love me?",
+                icon: "warning",
+                showDenyButton: true,
+                confirmButtonText: "Yes, baby!",
+                denyButtonText: `No`
+              }).then((res2) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (res2.isConfirmed) {
+                  Swal.fire({
+                    title: "Yeheyyy!",
+                    text: "Okay motuo nako.",
+                    icon: "success",
+                    showDenyButton: false,
+                    showCancelButton: false,
+                    confirmButtonText: "Okay"
+                  }).then((res3) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (res3.isConfirmed) {
+                      swal.fire("Happy lovemonth, babyyy!", "You make every moment special. I love you so much! I miss you sobraaa princess", "success");
+                    } else if (res3.isDenied) {
+                      Swal.fire({
+                        title: "AMBOT NIMU!",
+                        text: "Dili jud ko mosugot! Dili nako iingon akong message dani.",
+                        icon: "error"
+                      });
+                    }
+                  });
+                } else if (res2.isDenied) {
+                  Swal.fire({
+                    title: "AMBOT NIMU!",
+                    text: "Dili jud ko mosugot! Dili nako iingon akong message dani.",
+                    icon: "error"
+                  });
+                }
+              });
+            } else if (res1.isDenied) {
+              Swal.fire({
+                title: "AMBOT NIMU!",
+                text: "Dili jud ko mosugot! Dili nako iingon akong message dani.",
+                icon: "error"
+              });
+            }
+          });
+          
+        });
+    </script>
+</body>
+</html>
